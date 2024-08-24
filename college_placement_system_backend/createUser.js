@@ -9,16 +9,16 @@ mongoose.connect(process.env.MONGO_URI);
 const createUser = async () => {
   try {
     const user = new User({
-      username: "student",
-      password: "studentpass",
+      username: "student2",
+      password: "studentpass2",
       role: "student",
     });
 
     await user.save();
     console.log("User created:", user);
     const user2 = new User({
-      username: "admin",
-      password: "adminpass",
+      username: "admin2",
+      password: "adminpass2",
       role: "admin",
     });
 
