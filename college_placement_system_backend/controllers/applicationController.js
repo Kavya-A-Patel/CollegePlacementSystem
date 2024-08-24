@@ -1,6 +1,5 @@
 const Application = require("../models/Application");
 
-// Create a new application
 const createApplication = async (req, res) => {
   const { studentId, companyId, positionTitle, resume, coverLetter } = req.body;
 
@@ -19,7 +18,6 @@ const createApplication = async (req, res) => {
   }
 };
 
-// Get all applications (Admin only)
 const getApplications = async (req, res) => {
   try {
     const applications = await Application.find()
@@ -31,7 +29,6 @@ const getApplications = async (req, res) => {
   }
 };
 
-// Get applications by student ID
 const getApplicationsByStudentId = async (req, res) => {
   const { studentId } = req.params;
 
@@ -45,7 +42,6 @@ const getApplicationsByStudentId = async (req, res) => {
   }
 };
 
-// Get applications by company ID
 const getApplicationsByCompanyId = async (req, res) => {
   const { companyId } = req.params;
 
@@ -59,7 +55,6 @@ const getApplicationsByCompanyId = async (req, res) => {
   }
 };
 
-// Update application status (Admin only)
 const updateApplicationStatus = async (req, res) => {
   const { id } = req.params;
   const { status } = req.body;
@@ -78,7 +73,6 @@ const updateApplicationStatus = async (req, res) => {
   }
 };
 
-// Delete an application by ID
 const deleteApplication = async (req, res) => {
   const { id } = req.params;
 

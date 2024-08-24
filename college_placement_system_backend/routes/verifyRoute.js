@@ -29,7 +29,7 @@ router.post("/verify", async (req, res) => {
       }
     );
 
-    res.cookie("jwt", token, { httpOnly: true, secure: false }); // Set secure: true if using https
+    res.cookie("jwt", token, { httpOnly: true, secure: false });
     res.status(200).json({ message: "Login successful", role: user.role });
   } catch (error) {
     res.status(500).json({ message: "Server error" });

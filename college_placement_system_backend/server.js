@@ -12,12 +12,10 @@ dotenv.config();
 
 const app = express();
 
-// Middleware
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
-// Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI);
 const database = mongoose.connection;
 
@@ -29,7 +27,6 @@ database.once("connected", () => {
   console.log("Database Connected");
 });
 
-// Routes
 app.get("/", (req, res) => {
   res.send("API is running...");
 });

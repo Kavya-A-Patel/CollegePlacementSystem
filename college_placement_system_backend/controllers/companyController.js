@@ -1,6 +1,5 @@
 const Company = require("../models/Company");
 
-// Create a new company
 const createCompany = async (req, res) => {
   const { name, description, website, contactEmail, openPositions } = req.body;
 
@@ -19,7 +18,6 @@ const createCompany = async (req, res) => {
   }
 };
 
-// Get all companies
 const getCompanies = async (req, res) => {
   try {
     const companies = await Company.find();
@@ -29,7 +27,6 @@ const getCompanies = async (req, res) => {
   }
 };
 
-// Get a single company by ID
 const getCompanyById = async (req, res) => {
   const { id } = req.params;
 
@@ -42,7 +39,6 @@ const getCompanyById = async (req, res) => {
   }
 };
 
-// Update a company by ID
 const updateCompany = async (req, res) => {
   const { id } = req.params;
   const { name, description, website, contactEmail, openPositions } = req.body;
@@ -60,7 +56,6 @@ const updateCompany = async (req, res) => {
   }
 };
 
-// Delete a company by ID
 const deleteCompany = async (req, res) => {
   const { id } = req.params;
 

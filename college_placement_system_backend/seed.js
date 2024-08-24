@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
-const Company = require("./models/Company"); // Adjust the path if necessary
+const Company = require("./models/Company");
 
-// MongoDB connection string
 const mongoURI =
-  "mongodb+srv://admin:root@trial.yraap.mongodb.net/?retryWrites=true&w=majority&appName=Trial"; // Replace with your actual database name
+  "mongodb+srv://admin:root@trial.yraap.mongodb.net/?retryWrites=true&w=majority&appName=Trial";
 
 mongoose
   .connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -17,7 +16,6 @@ mongoose
 
 const seedData = async () => {
   try {
-    // Sample company data
     const companies = [
       {
         name: "Tech Innovators Inc.",
@@ -70,15 +68,12 @@ const seedData = async () => {
       },
     ];
 
-    // Clear existing data
     await Company.deleteMany({});
     console.log("Existing company data cleared.");
 
-    // Insert new sample data
     await Company.insertMany(companies);
     console.log("Sample company data added successfully!");
 
-    // Close the connection
     mongoose.connection.close();
   } catch (err) {
     console.error("Error seeding data:", err);

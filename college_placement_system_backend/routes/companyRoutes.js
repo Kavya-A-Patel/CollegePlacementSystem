@@ -9,10 +9,10 @@ const {
   deleteCompany,
 } = require("../controllers/companyController");
 
-router.get("/", authorizeRoles("admin"), getCompanies); // Admin only
-router.get("/:id", authorizeRoles("admin"), getCompanyById); // Admin only
-router.post("/", authorizeRoles("admin"), createCompany); // Admin only
-router.put("/:id", authorizeRoles("admin"), updateCompany); // Admin only
-router.delete("/:id", authorizeRoles("admin"), deleteCompany); // Admin only
+router.get("/", authorizeRoles("admin"), getCompanies);
+router.get("/:id", authorizeRoles("admin"), getCompanyById);
+router.post("/", authorizeRoles("admin"), createCompany);
+router.put("/:id", authorizeRoles("admin"), updateCompany);
+router.delete("/:id", authorizeRoles("admin"), deleteCompany);
 
 module.exports = router;
