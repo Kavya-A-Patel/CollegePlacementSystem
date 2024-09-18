@@ -10,14 +10,15 @@ router.post("/verify", async (req, res) => {
 
   try {
     const user = await User.findOne({ username });
-
     if (!user) {
+      console.log("User not found");
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
-    const isMatch = await bcrypt.compare(password, user.password);
+    const isMatch = await user.matchPassword(password);
 
     if (!isMatch) {
+      console.log("Password does not match");
       return res.status(401).json({ message: "Invalid credentials" });
     }
 
@@ -30,8 +31,10 @@ router.post("/verify", async (req, res) => {
     );
 
     res.cookie("jwt", token, { httpOnly: true, secure: false });
+    console.log("Login successful");
     res.status(200).json({ message: "Login successful", role: user.role });
   } catch (error) {
+    console.error("Server error:", error);
     res.status(500).json({ message: "Server error" });
   }
 });

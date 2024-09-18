@@ -4,9 +4,10 @@ const dotenv = require("dotenv");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const PORT = process.env.PORT || 5001;
+
 const verifyRoute = require("./routes/verifyRoute");
-const companyRoutes = require("./routes/companyRoutes");
-const applicationRoutes = require("./routes/applicationRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+const studentRoutes = require("./routes/studentRoutes");
 
 dotenv.config();
 
@@ -32,8 +33,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/auth", verifyRoute);
-
-app.use("/api/companies", companyRoutes);
-app.use("/api/applications", applicationRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/student", studentRoutes);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

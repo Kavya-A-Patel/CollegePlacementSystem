@@ -12,17 +12,24 @@ const applicationSchema = new mongoose.Schema(
       ref: "Company",
       required: true,
     },
-    positionTitle: { type: String, required: true },
+    positionTitle: {
+      type: String,
+      required: true,
+    },
+    resume: {
+      type: String,
+      required: true,
+    },
+    coverLetter: {
+      type: String,
+      required: true,
+    },
     status: {
       type: String,
-      enum: ["Applied", "Interviewing", "Offered", "Rejected"],
       default: "Applied",
     },
-    resume: { type: String, required: true },
-    coverLetter: { type: String },
   },
   { timestamps: true }
 );
 
-const Application = mongoose.model("Application", applicationSchema);
-module.exports = Application;
+module.exports = mongoose.model("Application", applicationSchema);
